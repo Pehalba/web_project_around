@@ -1,0 +1,46 @@
+.feed {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px 17px;
+}
+
+.feed__card {
+  max-width: 282px;
+  background-color: #fff;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.feed__photo {
+  width: 282px;
+  height: 282px;
+  top: 329px;
+  left: 200px;
+  gap: 0px;
+  border-radius: 10px 10px 0px 0px;
+  opacity: 0px;
+}
+
+.feed__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #fff;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.feed__text {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+  color: black;
+}
+
+.feed__button {
+  width: 21px;
+  height: 19px;
+  padding-top: ;
+}

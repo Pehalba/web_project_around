@@ -1,0 +1,11 @@
+.page {
+  font-family: "Inter", Arial, sans-serif;
+  color: #fff;
+  min-width: 320px;
+  max-width: 1600px;
+  padding: 0 200px 0 200px;
+}
+
+body {
+  background: #000;
+}
