@@ -44,3 +44,28 @@
   height: 19px;
   padding-top: ;
 }
+
+@media screen and (max-width: 1024px) {
+  .feed {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 17px 20px;
+    max-width: 580px;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+  .feed__card {
+    display: flex;
+    flex-direction: column;
+    max-width: 282px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .feed {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 282px;
+    padding-top: 250px;
+  }
+}
