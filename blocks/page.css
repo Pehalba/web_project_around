@@ -2,8 +2,7 @@
   font-family: "Inter", Arial, sans-serif;
   color: #fff;
   min-width: 320px;
-  max-width: 1600px;
-  padding: 0 200px 0 200px;
+  max-width: 1280px;
 }
 
 body {
@@ -17,7 +16,7 @@ body {
 @media screen and (max-width: 1024px) {
   .page {
     max-width: 1024px;
-    padding: 0 90px 0 90px;
+    margin: 0 auto;
   }
 }
 

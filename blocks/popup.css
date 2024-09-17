@@ -6,12 +6,17 @@
   height: 100vh;
   width: 100%;
   z-index: 3;
+  display: none;
+}
+.popup__opened {
+  display: block;
 }
 
 .popup__card {
   background: rgba(255, 255, 255, 1);
   max-width: 430px;
   width: 100%;
+  height: 330px;
   border: 1px solid rgba(0, 0, 0, 1);
   position: absolute;
   top: 50%;
@@ -21,9 +26,24 @@
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
 }
 
+.popup__button-close {
+  background: transparent;
+  position: absolute;
+  right: -34px;
+  top: -30px;
+  border: none;
+  width: 26px;
+  height: 26px;
+}
+
+.popup__button-close:hover {
+  opacity: 60%;
+}
+
 .popup__fieldset {
   display: flex;
   flex-direction: column;
+  border: none;
 }
 
 .popup__title {
@@ -37,14 +57,124 @@
   padding: 34px 64px 54px 36px;
 }
 
-.popup__input {
+.popup__name {
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
   text-align: left;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   margin: 0 36px;
   max-width: 358px;
   width: 80%;
+}
+
+.popup__job {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  margin: 0 36px;
+  max-width: 358px;
+  width: 80%;
+  margin-top: 29.74px;
+}
+
+.popup__button-save {
+  width: 358px;
+  height: 50.15px;
+  border-radius: 2px 0px 0px 0px;
+  opacity: 0px;
+  background-color: black;
+  margin: auto;
+  margin-top: 48px;
+}
+
+.popup__button-text {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  color: #fff;
+  margin-top: 13.66px;
+  margin-bottom: 18.49px;
+}
+
+.popup__button-save:hover {
+  background-color: rgb(49, 49, 49);
+  opacity: 60%;
+}
+
+@media screen and (max-width: 720px) {
+  .popup__card {
+    width: 282px;
+    height: 322px;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  .popup__title {
+    width: 238px;
+    height: 22px;
+
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 21.78px;
+    text-align: left;
+    margin: 0;
+    padding: 25px 22px 75px 22px;
+  }
+
+  .popup__label {
+    margin: auto;
+  }
+  .popup__name {
+    width: 200px;
+    border: 1px 0px 0px 0px;
+    opacity: 0.2px;
+    margin: auto;
+    padding: 0 22px 0px 22px;
+  }
+
+  .popup__job {
+    width: 200px;
+    border: 1px 0px 0px 0px;
+    opacity: 0.2px;
+    margin: 0 auto;
+    padding: 30px 22px 0px 22px;
+  }
+  .popup__fieldset {
+    max-width: 282px;
+    height: 322px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .popup__button-save {
+    width: 238px;
+    height: 46px;
+    top: 374px;
+    left: 41px;
+    gap: 0px;
+    border-radius: 2px 0px 0px 0px;
+    opacity: 0px;
+  }
+  .popup__button-text {
+    margin: 0;
+  }
+
+  .profile__button-add {
+    margin-top: 36px;
+    width: 282px;
+    min-height: 50px;
+  }
+
+  .popup__button-close {
+    max-width: 26px;
+    max-height: 26px;
+    top: -50px;
+    left: 245px;
+  }
 }
