@@ -1,26 +1,26 @@
 //seleciona botão de ditar
-let buttonOpenProfile = document.querySelector(".profile__button-edit");
+const buttonOpenProfile = document.querySelector(".profile__button-edit");
 
 //clica no botão editar e abrir pop removendo display none
 
 buttonOpenProfile.addEventListener("click", () => {
   //função para remover display none
-  let popupProfile = document.querySelector(".popup");
+  const popupProfile = document.querySelector(".popup");
   popupProfile.classList.add("popup__opened");
 });
 
 //seleciona boão fechar
-let buttonCloseProfile = document.querySelector(".popup__button-close");
+const buttonCloseProfile = document.querySelector(".popup__button-close");
 
 //clicar no botão de fechar, e adicionar display none
 
 buttonCloseProfile.addEventListener("click", () => {
-  let popupCloseProfile = document.querySelector(".popup");
+  const popupCloseProfile = document.querySelector(".popup");
   popupCloseProfile.classList.remove("popup__opened");
 });
 
 // Vamos encontrar o formulário no DOM
-let formElement = document.querySelector(".popup__form");
+const formElement = document.querySelector(".popup__form");
 
 // Em seguida vem o handler do submit
 // ainda não vai enviar para lugar nenhum
@@ -35,21 +35,24 @@ function handleProfileFormSubmit(evt) {
   // Explicaremos em mais detalhes posteriormente.
 
   // Vamos encontrar os campos de formulário do DOM
-  let nameInput = document.querySelector(".popup__name");
-  let jobInput = document.querySelector(".popup__job");
+  const nameInput = document.querySelector(".popup__name");
+  const jobInput = document.querySelector(".popup__job");
 
   // Pegue os valores de cada campo do valor da propriedade correspondente
 
-  let name = nameInput.value;
-  let job = jobInput.value;
+  const name = nameInput.value;
+  const job = jobInput.value;
 
   // Selecione os elementos aos quais os valores dos campos serão inseridos
-  let nameElement = document.querySelector(".profile__name");
-  let jobElement = document.querySelector(".profile__description");
+  const nameElement = document.querySelector(".profile__name");
+  const jobElement = document.querySelector(".profile__description");
   // Insira novos valores usando a
   // propriedade textContent
   nameElement.textContent = name;
   jobElement.textContent = job;
+
+  const popupCloseProfile = document.querySelector(".popup");
+  popupCloseProfile.classList.remove("popup__opened");
 }
 
 // Conecte o handler ao formulário:

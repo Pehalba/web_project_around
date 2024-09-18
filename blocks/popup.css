@@ -34,6 +34,7 @@
   border: none;
   width: 26px;
   height: 26px;
+  cursor: pointer;
 }
 
 .popup__button-close:hover {
@@ -90,6 +91,7 @@
   background-color: black;
   margin: auto;
   margin-top: 48px;
+  cursor: pointer;
 }
 
 .popup__button-text {
