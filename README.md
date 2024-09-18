@@ -9,3 +9,4 @@ As tecnologias empregadas no desenvolvimento foram HTML, CSS e JavaScript, utili
 The technologies used in the development were HTML, CSS, and JavaScript, applying the BEM methodology for a clear and organized code structure.
 
 Link git hub pages:
+https://pehalba.github.io/web_project_around/
