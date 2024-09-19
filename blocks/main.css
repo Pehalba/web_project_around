@@ -1,7 +1,8 @@
 .profile {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+
+  align-items: center;
   height: 120px;
   margin-top: 40px;
 }
@@ -11,9 +12,17 @@
   border-radius: 50%;
 }
 
+.profile__layout {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 30px;
+}
 .profile__info {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .profile__name {
@@ -60,16 +69,15 @@
 .profile__button-add {
   width: 150px;
   height: 50px;
-  top: 194px;
-  left: 930px;
-  gap: 0px;
   border-radius: 2px 0px 0px 0px;
   opacity: 0px;
   border: 2px solid #ffffff;
   background-color: #000;
   color: #ffffff;
   cursor: pointer;
+  padding: 0;
 }
+
 .profile__button-add:hover {
   opacity: 60%;
 }
@@ -91,7 +99,7 @@
   }
 
   .profile__button-add {
-    margin-left: 100px;
+    margin-left: 80px;
   }
 }
 
@@ -134,5 +142,10 @@
     max-width: 282px;
     height: 50px;
     margin: 36px auto 0;
+  }
+  .profile__layout {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
 }
