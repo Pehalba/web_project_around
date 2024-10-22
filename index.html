@@ -43,109 +43,33 @@
         </div>
 
         <!--feed-->
-        <section class="feed">
+        <section class="feed"></section>
+        <template class="info__template">
           <div class="feed__card">
             <img
-              class="feed__photo"
-              src="./images/1.jpg"
-              alt="paisagem do Vale de Yosemite"
+              class="delete-button"
+              src="./images/Trash.svg"
+              salt="Excluir
+          cartão"
             />
-            <div class="feed__info">
-              <h2 class="feed__text">Vale de Yosemite</h2>
-              <img
-                class="feed_like-button"
-                src="./images/like.svg"
-                alt="botão curtir"
-              />
-            </div>
-          </div>
+            <img class="feed__photo" src="" alt="" />
 
-          <div class="feed__card">
-            <img
-              class="feed__photo"
-              src="./images/2.png"
-              alt="paisagem do Lago Louise"
-            />
             <div class="feed__info">
-              <h2 class="feed__text">Lago Louise</h2>
+              <h2 class="feed__text"></h2>
               <img
-                class="feed_like-button"
+                class="feed_like-button feed_like-button-desactived"
                 src="./images/like.svg"
                 alt="botão curtir"
               />
             </div>
           </div>
-
-          <div class="feed__card">
-            <img
-              class="feed__photo"
-              src="./images/3.png"
-              alt="paisagem das Montanhas Care"
-            />
-            <div class="feed__info">
-              <h2 class="feed__text">Montanhas Carecas</h2>
-              <img
-                class="feed_like-button"
-                src="./images/like.svg"
-                alt="botão curtir"
-              />
-            </div>
-          </div>
-
-          <div class="feed__card">
-            <img
-              class="feed__photo"
-              src="./images/4.png"
-              alt="paisagem do Latemar"
-            />
-            <div class="feed__info">
-              <h2 class="feed__text">Latemar</h2>
-              <img
-                class="feed_like-button"
-                src="./images/like.svg"
-                alt="botão curtir"
-              />
-            </div>
-          </div>
-
-          <div class="feed__card">
-            <img
-              class="feed__photo"
-              src="./images/5.png"
-              alt="paisagem do Parque Nacional da Vanoise"
-            />
-            <div class="feed__info">
-              <h2 class="feed__text">Parque Nacional da Vanoise</h2>
-              <img
-                class="feed_like-button"
-                src="./images/like.svg"
-                alt="botão curtir"
-              />
-            </div>
-          </div>
-
-          <div class="feed__card">
-            <img
-              class="feed__photo"
-              src="./images/6.png"
-              alt="paisagem do Lago di Braies"
-            />
-            <div class="feed__info">
-              <h2 class="feed__text">Lago di Braies</h2>
-              <img
-                class="feed_like-button"
-                src="./images/like.svg"
-                alt="botão curtir"
-              />
-            </div>
-          </div>
-        </section>
+        </template>
       </main>
 
       <!-- POPUP EDIT PROFILE -->
       <div class="popup">
         <div class="popup__card">
-          <button class="popup__button-close">
+          <button class="popup__button-close popup__button-close">
             <img src="./images/Close Icon.png" />
           </button>
 
@@ -167,6 +91,43 @@
                   type="text"
                   class="popup__job"
                   placeholder="Sobre mim"
+                  required
+                />
+              </label>
+
+              <button type="submit" class="popup__button-save">
+                <h3 class="popup__button-text">Salvar</h3>
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+      <!-- POPUP ADD PHOTO -->
+      <div class="popup popup_add">
+        <div class="popup__card">
+          <button class="popup__button-close popup__button-close-add">
+            <img src="./images/Close Icon.png" />
+          </button>
+
+          <form class="popup__form">
+            <fieldset class="popup__fieldset">
+              <h3 class="popup__title">New place</h3>
+
+              <label class="popup__label">
+                <input
+                  type="text"
+                  class="popup__name"
+                  placeholder="title"
+                  required
+                />
+              </label>
+
+              <label class="popup__label">
+                <input
+                  type="text"
+                  class="popup__job popup__link"
+                  placeholder="Image url"
                   required
                 />
               </label>
