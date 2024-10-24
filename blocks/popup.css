@@ -36,6 +36,7 @@
   width: 26px;
   height: 26px;
   cursor: pointer;
+  z-index: 10;
 }
 
 .popup__button-close:hover {
@@ -94,7 +95,10 @@
   margin-top: 48px;
   cursor: pointer;
 }
-
+.popup__photo-img {
+  max-width: 700px;
+  max-height: 500px;
+}
 .popup__button-text {
   font-family: Inter;
   font-size: 18px;
@@ -108,6 +112,43 @@
 .popup__button-save:hover {
   background-color: rgb(49, 49, 49);
   opacity: 60%;
+}
+
+/*.popup__card-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+}
+*/
+.popup__card-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+
+.popup__button-closes {
+  background: transparent;
+  border: none;
+  right: 200px;
+  top: 100px;
+}
+.popup__button-close-photo {
+}
+
+.popup__button-closes {
+  padding-left: 700px;
+}
+.popup__text-city {
+  padding-right: 500px;
+}
+
+.popup__card-container {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 720px) {
@@ -179,5 +220,19 @@
     max-height: 26px;
     top: -50px;
     left: 245px;
+  }
+
+  .popup__photo-img {
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .popup__button-closes {
+    background: transparent;
+    border: none;
+    padding-left: 350px;
+  }
+  .popup__text-city {
+    padding-right: 200px;
   }
 }

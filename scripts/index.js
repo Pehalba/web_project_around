@@ -101,6 +101,7 @@ function createCards(element) {
   const cardText = cardElement.querySelector(".feed__text");
   const likeButton = cardElement.querySelector(".feed_like-button");
   const deleteButton = cardElement.querySelector(".delete-button"); // Botão de lixeira
+  const buttonClosePhoto = document.querySelector(".popup__button-closes");
 
   // popular card
   cardImage.src = element.link;
@@ -112,20 +113,38 @@ function createCards(element) {
     cardElement.remove(); // Remove o cartão quando a lixeira for clicada
   });
 
-  //adicionar Card no html
-  elementList.prepend(cardElement);
+  buttonClosePhoto.addEventListener("click", () =>
+    closePopup(".popup_add-photo")
+  );
+  // Adicionar evento de clique para abrir o popup com a imagem ampliada
 
-  let favoritado = false;
+  let favorite = false;
 
   likeButton.addEventListener("click", () => {
-    if (!favoritado) {
+    if (!favorite) {
       likeButton.src = "./images/like.svg";
-      favoritado = true;
+      favorite = true;
     } else {
       likeButton.src = "./images/likeActived.svg";
-      favoritado = false;
+      favorite = false;
     }
   });
+
+  //abrir popup images
+  const popupPhoto = document.querySelector(".popup_add-photo");
+  const popupPhotoImage = popupPhoto.querySelector(".popup__photo-img");
+  const popupTextImage = popupPhoto.querySelector(".popup__text-city");
+
+  function openImagePopup(imageSrc) {
+    popupPhotoImage.src = imageSrc; // Define o src da imagem para o link passado
+    popupTextImage.textContent = element.name;
+    popupPhoto.classList.add("popup__opened"); // Adiciona a classe para abrir o popup
+  }
+
+  cardImage.addEventListener("click", () => openImagePopup(element.link));
+
+  //adicionar Card no html
+  elementList.prepend(cardElement);
 }
 
 initialCards.forEach(createCards);
