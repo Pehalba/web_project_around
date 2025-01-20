@@ -98,10 +98,6 @@
 .popup__photo-img {
   max-width: 816px;
   max-height: 540px;
-  top: 90px;
-  left: 232px;
-  gap: 0px;
-  opacity: 0px;
 }
 .popup__button-text {
   font-family: Inter;
@@ -128,7 +124,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 150px;
+  top: 195px;
+  max-width: 75%;
 }
 
 .popup__button-closes {
@@ -230,8 +227,5 @@
     background: transparent;
     border: none;
     padding-left: 350px;
-  }
-  .popup__text-city {
-    padding-right: 200px;
   }
 }
