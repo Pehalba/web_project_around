@@ -1,6 +1,33 @@
 .header {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.header__nav {
+  border-bottom: 1px solid #545454;
+  padding-top: 45px;
+  margin-bottom: 40px;
+}
+
+.header__nav-image:hover {
+  opacity: 0%;
+}
+
+.header__nav-image {
+  max-width: 173px;
   display: flex;
-  flex-direction: row;
-  justify-content: start;
-  border-bottom: 1px solid rgba(84, 84, 84, 1);
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 41px;
+}
+
+@media screen and (max-width: 920px) {
+  .header {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .header__nav {
+    margin: 0;
+  }
 }

@@ -8,159 +8,155 @@
     <meta name="keywords" content="css, html, javascript" />
 
     <title>Tripleten Project Around</title>
+
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
-
-  <!--sprint 7-->
   <body>
     <div class="page">
-      <header class="header">
-        <h1 class="header__title">Around</h1>
-        <p class="header__text">The U.S.</p>
-      </header>
-      <main>
-        <div class="profile">
-          <img
-            class="profile__photo"
-            src="./images/Profile_photo.jpg"
-            alt="Profile_photo"
-          />
-          <div class="profile__layout">
-            <div class="profile__info">
-              <div>
-                <h2 class="profile__name">Jacques Cousteau</h2>
-                <p class="profile__description">Explorador</p>
-              </div>
-              <button class="profile__button-edit">
-                <img class="profile__button_image" src="./images/edit.png" />
-              </button>
+      <!--Popup perfil-->
+      <div class="popup popup-profile">
+        <div class="popup__container">
+          <h1 class="popup__header">Editar perfil</h1>
+          <form class="popup__form">
+            <button type="button" class="popup__form-button-close"></button>
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input"
+                type="text"
+                placeholder="Nome"
+                value=""
+                id="name"
+                maxlength="20"
+                minlength="2"
+                required
+              />
+              <p class="input__errorMessage"></p>
             </div>
-
-            <button class="profile__button-add">
-              <img src="./images/+.png" />
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input"
+                type="text"
+                placeholder="Sobre mim"
+                value=""
+                id="profission"
+                maxlength="200"
+                minlength="2"
+                required
+              />
+              <p class="input__errorMessage"></p>
+            </div>
+            <button type="submit" class="popup__form-button-save form__submit">
+              Salvar
             </button>
+          </form>
+        </div>
+      </div>
+
+      <!--Popup form add image-->
+      <div class="popup popup-image">
+        <div class="popup__container">
+          <h1 class="popup__header">Novo local</h1>
+          <form class="popup__form" novalidate>
+            <button
+              class="popup__form-button-close popup__form-button-img"
+            ></button>
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input"
+                type="text"
+                placeholder="Título"
+                value=""
+                id="tittle"
+                maxlength="30"
+                minlength="2"
+                required
+              />
+              <p class="input__errorMessage"></p>
+            </div>
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input"
+                type="url"
+                placeholder="Link da imagem"
+                value=""
+                id="url"
+                required
+              />
+              <p class="input__errorMessage"></p>
+            </div>
+            <button
+              type="submit"
+              class="popup__form-button-save form__submit"
+              id="add-button"
+              disabled
+            >
+              Criar
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!--Popup Image-->
+      <div class="popup popup__imgfull">
+        <div class="popup__imgfull-card">
+          <div class="popup__imgfull-card-screen">
+            <button class="popup__imgfull-button-close"></button>
+            <img class="popup__imgfull-imgbig" src="" alt="" />
+            <p class="popup__imgfull-tittle"></p>
           </div>
         </div>
+      </div>
 
-        <!--feed-->
-        <section class="feed"></section>
-        <template class="info__template">
-          <div class="feed__card">
+      <header class="header">
+        <nav class="header__nav">
+          <img
+            class="header__nav-image"
+            src="./images/Vector.png"
+            alt="titulo da pagina"
+          />
+        </nav>
+      </header>
+
+      <section class="profile">
+        <img
+          src="./images/image__profile.png"
+          alt="imagem de perfil senhor"
+          class="profile__image"
+        />
+        <div class="profile__info">
+          <h1 class="profile__info-name">Jacques Cousteau</h1>
+          <p class="profile__info-profession">Explorador</p>
+          <button class="profile__info-button-edit"></button>
+        </div>
+        <button class="profile__button"></button>
+      </section>
+
+      <section class="elements">
+        <template id="element-template">
+          <div class="elements__element">
+            <button class="elements-element-button-trash"></button>
             <img
-              class="delete-button"
-              src="./images/Trash.svg"
-              salt="Excluir
-          cartão"
+              src=""
+              alt=""
+              class="elements__element-image elements__element-image-fix"
             />
-            <img class="feed__photo" src="" alt="" />
-
-            <div class="feed__info">
-              <h2 class="feed__text"></h2>
+            <div class="elements__element-container-card">
+              <h2 class="elements__element-title">Vale de Yosemite</h2>
               <img
-                class="feed_like-button feed_like-button-desactived"
-                src="./images/like.svg"
-                alt="botão curtir"
+                class="elements__element-button-heart"
+                src="./images/elements__image-heart-disble.png"
+                alt="botao unlike"
               />
             </div>
           </div>
         </template>
-      </main>
+      </section>
 
-      <!-- POPUP EDIT PROFILE -->
-      <div class="popup">
-        <div class="popup__card">
-          <button class="popup__button-close popup__button-close">
-            <img src="./images/Close Icon.png" />
-          </button>
-
-          <form class="popup__form">
-            <fieldset class="popup__fieldset">
-              <h3 class="popup__title">Editar perfil</h3>
-
-              <label class="popup__label">
-                <input
-                  type="text"
-                  class="popup__name"
-                  placeholder="nome"
-                  required
-                />
-              </label>
-
-              <label class="popup__label">
-                <input
-                  type="text"
-                  class="popup__job"
-                  placeholder="Sobre mim"
-                  required
-                />
-              </label>
-
-              <button type="submit" class="popup__button-save">
-                <h3 class="popup__button-text">Salvar</h3>
-              </button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-
-      <!-- POPUP ADD PHOTO -->
-      <div class="popup popup_add">
-        <div class="popup__card">
-          <button class="popup__button-close popup__button-close-add">
-            <img src="./images/Close Icon.png" />
-          </button>
-
-          <form class="popup__form">
-            <fieldset class="popup__fieldset">
-              <h3 class="popup__title">New place</h3>
-
-              <label class="popup__label">
-                <input
-                  type="text"
-                  class="popup__name"
-                  placeholder="title"
-                  required
-                />
-              </label>
-
-              <label class="popup__label">
-                <input
-                  type="text"
-                  class="popup__job popup__link"
-                  placeholder="Image url"
-                  required
-                />
-              </label>
-
-              <button type="submit" class="popup__button-save">
-                <h3 class="popup__button-text">Salvar</h3>
-              </button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-
-      <!-- POPUP PHOTO -->
-      <div class="popup popup_add-photo">
-        <div class="edit__popup">
-          <div class="popup__card-photo">
-            <button class="popup__button-closes">
-              <img
-                class="popup__button-closes-photo"
-                src="./images/Close Icon.png"
-              />
-            </button>
-            <img class="popup__photo-img" src="" alt="Imagem ampliada" />
-
-            <p class="popup__text-city"></p>
-          </div>
-        </div>
-      </div>
-
-      <footer>
-        <p class="footer__text">© 2024 Around The U.S.</p>
+      <footer class="footer">
+        <p class="footer__paragraph">&copy; 2024 Around The U.S.</p>
       </footer>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

@@ -1,64 +1,131 @@
-//seleciona botão de ditar
-const buttonOpenProfile = document.querySelector(".profile__button-edit");
+// Variaveis PopuPerfil
+const popupProfile = document.querySelector(".popup-profile");
+const popup = document.querySelector(".popup");
+const editbutton = document.querySelector(".profile__info-button-edit");
+const closebutton = document.querySelector(".popup__form-button-close");
+const closePopupImgButton = document.querySelector(".popup__form-button-img");
 
-function openPopup(popupClass) {
-  const popup = document.querySelector(popupClass);
-  popup.classList.add("popup__opened");
+const saveButtonProfile = document.querySelector(".popup__form-button-save");
+
+const form = document.querySelector(".popup__form");
+const inputName = form.querySelector("#name");
+const inputProfission = form.querySelector("#profission");
+
+const profileInfo = document.querySelector(".profile__info-name");
+const profileProfission = document.querySelector(".profile__info-profession");
+
+const buttonHeartLike = document.querySelectorAll(
+  ".elements__element-button-heart"
+);
+
+// Variaveis Popup Add Card
+const popupImage = document.querySelector(".popup-image");
+const addImageButton = document.querySelector(".profile__button");
+
+const inputTittle = document.querySelector("#tittle");
+const inputUrl = document.querySelector("#url");
+const saveButton = document.querySelector("#add-button");
+const cards = document.querySelector(".elements");
+
+//Variaveis PopupimgFull
+const closePopupImgFull = document.querySelector(
+  ".popup__imgfull-button-close"
+);
+const imgFull = document.querySelector(".popup__imgfull");
+const openImgFull = document.querySelector(".popup__imgfull-imgbig");
+const openImgFullTittle = document.querySelector(".popup__imgfull-tittle");
+
+// Abrir/fechar popperfil
+function openPopup() {
+  popup.classList.add("popup_change_display");
+}
+editbutton.addEventListener("click", openPopup);
+
+function closePopup() {
+  popup.classList.remove("popup_change_display");
+}
+closebutton.addEventListener("click", closePopup);
+
+//Fechar pop with ESCAPE
+function closePopWithEsc(event) {
+  if (event.key == "Escape") {
+    const popupAll = document.querySelectorAll(".popup");
+    popupAll.forEach((popup) => {
+      popup.classList.remove("popup_change_display");
+      imgFull.style.display = "none";
+    });
+  }
+}
+document.addEventListener("keydown", closePopWithEsc);
+
+// Abrir/fechar Popup Cards
+function openPopupImg() {
+  popupImage.classList.add("popup_change_display");
+}
+addImageButton.addEventListener("click", openPopupImg);
+
+function closePopupImg() {
+  popupImage.classList.remove("popup_change_display");
+}
+closePopupImgButton.addEventListener("click", closePopupImg);
+
+//Fechar PopupIMGfull
+
+function closeImgFull() {
+  imgFull.style.display = "none";
+}
+closePopupImgFull.addEventListener("click", closeImgFull);
+
+//ferchar popup click
+popup.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup")) {
+    closePopup();
+  }
+});
+
+popupImage.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup-image")) closePopupImg();
+});
+
+imgFull.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup__imgfull-card")) closeImgFull();
+});
+
+// Atualizar dados do usuario
+function updateProfileInfo(event) {
+  event.preventDefault();
+  profileInfo.textContent = inputName.value;
+  profileProfission.textContent = inputProfission.value;
+  closePopup();
+}
+saveButtonProfile.addEventListener("click", updateProfileInfo);
+
+//add card image
+function addCardImage(event) {
+  event.preventDefault();
+  if (inputTittle.value != "" && inputUrl.value != "") {
+    const newCard = createCard({
+      name: inputTittle.value,
+      link: inputUrl.value,
+    });
+    cards.prepend(newCard);
+    inputTittle.value = "";
+    inputUrl.value = "";
+  }
+  closePopupImg();
+}
+saveButton.addEventListener("click", addCardImage);
+
+// botao de like
+function heartLike(event) {
+  event.target.classList.toggle("elements__element_button-heart-like");
 }
 
-buttonOpenProfile.addEventListener("click", () => openPopup(".popup"));
+buttonHeartLike.forEach((buttonLike) => {
+  buttonLike.addEventListener("click", heartLike);
+});
 
-//seleciona boão fechar
-const buttonCloseProfile = document.querySelector(".popup__button-close");
-
-//clicar no botão de fechar, e adicionar display none
-
-function closePopup(popupClass) {
-  const popup = document.querySelector(popupClass);
-  popup.classList.remove("popup__opened");
-}
-
-buttonCloseProfile.addEventListener("click", () => closePopup(".popup"));
-
-// Vamos encontrar o formulário no DOM
-const formElement = document.querySelector(".popup__form");
-
-// Em seguida vem o handler do submit
-// ainda não vai enviar para lugar nenhum
-
-// Observe que o nome da função começa com um verbo
-// e descreve exatamente o que a função faz
-function handleProfileFormSubmit(evt) {
-  // Esta linha impede o navegador
-  // de enviar o formulário da forma padrão.
-  evt.preventDefault();
-  // Fazendo isso, podemos definir nossa própria forma de enviar o formulário.
-  // Explicaremos em mais detalhes posteriormente.
-
-  // Vamos encontrar os campos de formulário do DOM
-  const nameInput = document.querySelector(".popup__name");
-  const jobInput = document.querySelector(".popup__job");
-
-  // Pegue os valores de cada campo do valor da propriedade correspondente
-
-  const name = nameInput.value;
-  const job = jobInput.value;
-
-  // Selecione os elementos aos quais os valores dos campos serão inseridos
-  const nameElement = document.querySelector(".profile__name");
-  const jobElement = document.querySelector(".profile__description");
-  // Insira novos valores usando a
-  // propriedade textContent
-  nameElement.textContent = name;
-  jobElement.textContent = job;
-
-  const popupCloseProfile = document.querySelector(".popup");
-  popupCloseProfile.classList.remove("popup__opened");
-}
-
-// Conecte o handler ao formulário:
-// ele vai observar o evento de submit
-formElement.addEventListener("submit", handleProfileFormSubmit);
+// pegar o array
 
 const initialCards = [
   {
@@ -87,104 +154,70 @@ const initialCards = [
   },
 ];
 
-const elementList = document.querySelector(".feed");
+//criar cada cartao (criar elemento html - template)
+function createCard(card) {
+  //pegar o template
+  const cardTemplate = document.querySelector("#element-template").content;
+  //fazer a copia
+  const elementCard = cardTemplate
+    .querySelector(".elements__element")
+    .cloneNode(true);
+  //pegar os elementos de dentro da copia
+  const cardTitle = elementCard.querySelector(".elements__element-title");
+  const cardImage = elementCard.querySelector(".elements__element-image");
+  const cardLink = elementCard.querySelector(".elements__element-image");
+  const cardTrash = elementCard.querySelector("elements-element-button-trash");
+  //popular os sub elementos
+  cardTitle.textContent = card.name;
+  cardImage.setAttribute("alt", card.name);
+  cardLink.setAttribute("src", card.link);
 
-//cria cartões
-function createCards(element) {
-  //pega o template
-  const cardTemplate = document.querySelector(".info__template").content;
-  // faz uma cópia
-  const cardElement = cardTemplate.querySelector(".feed__card").cloneNode(true);
+  //pega a lista
+  const elements = document.querySelector(".elements");
+  //prepend
+  elements.prepend(elementCard);
 
-  //pegar elementos dentro da copia
-  const cardImage = cardElement.querySelector(".feed__photo");
-  const cardText = cardElement.querySelector(".feed__text");
-  const likeButton = cardElement.querySelector(".feed_like-button");
-  const deleteButton = cardElement.querySelector(".delete-button"); // Botão de lixeira
-  const buttonClosePhoto = document.querySelector(".popup__button-closes");
+  //botao like
+  elementCard
+    .querySelector(".elements__element-button-heart")
+    .addEventListener("click", (event) => {
+      if (
+        event.target.getAttribute("src") ===
+        "./images/elements__image-heart-disble.png"
+      ) {
+        return event.target.setAttribute(
+          "src",
+          "./images/elements_element-button-heart-like.png"
+        );
+      }
+      return event.target.setAttribute(
+        "src",
+        "./images/elements__image-heart-disble.png"
+      );
+    });
 
-  // popular card
-  cardImage.src = element.link;
-  cardImage.alt = element.name;
-  cardText.textContent = element.name;
+  //remove card
+  elementCard
+    .querySelector(".elements-element-button-trash")
+    .addEventListener("click", (event) => {
+      event.target.parentElement.remove();
+    });
 
-  // Adicionar funcionalidade de deletar ao botão de lixeira
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove(); // Remove o cartão quando a lixeira for clicada
-  });
+  //Abrir/fechar PopupImgFull
+  elementCard
+    .querySelector(".elements__element-image")
+    .addEventListener("click", (event) => {
+      openImgFull.setAttribute("alt", card.name);
+      openImgFull.setAttribute("src", card.link);
+      openImgFullTittle.textContent = card.name;
 
-  buttonClosePhoto.addEventListener("click", () =>
-    closePopup(".popup_add-photo")
-  );
-  // Adicionar evento de clique para abrir o popup com a imagem ampliada
+      imgFull.style.display = "block";
+    });
 
-  let favorite = false;
-
-  likeButton.addEventListener("click", () => {
-    if (!favorite) {
-      likeButton.src = "./images/like.svg";
-      favorite = true;
-    } else {
-      likeButton.src = "./images/likeActived.svg";
-      favorite = false;
-    }
-  });
-
-  //abrir popup images
-  const popupPhoto = document.querySelector(".popup_add-photo");
-  const popupPhotoImage = popupPhoto.querySelector(".popup__photo-img");
-  const popupTextImage = popupPhoto.querySelector(".popup__text-city");
-
-  function openImagePopup(imageSrc) {
-    popupPhotoImage.src = imageSrc; // Define o src da imagem para o link passado
-    popupTextImage.textContent = element.name;
-    popupPhoto.classList.add("popup__opened"); // Adiciona a classe para abrir o popup
-  }
-
-  cardImage.addEventListener("click", () => openImagePopup(element.link));
-
-  //adicionar Card no html
-  elementList.prepend(cardElement);
+  return elementCard;
 }
-
-initialCards.forEach(createCards);
-
-//popup de adicionar fotos
-const buttonOpenAdd = document.querySelector(".profile__button-add");
-
-buttonOpenAdd.addEventListener("click", () => openPopup(".popup_add"));
-
-const buttonCloseAdd = document.querySelector(".popup__button-close-add");
-buttonCloseAdd.addEventListener("click", () => closePopup(".popup_add"));
-
-const popupAdd = document.querySelector(".popup_add");
-
-const formAddCard = popupAdd.querySelector(".popup__form");
-formAddCard.addEventListener("submit", (evt) => {
-  // atrasa o carregamento
-  evt.preventDefault();
-  //pega os valores do input
-  const inputName = formAddCard.querySelector(".popup__name");
-  const inputLink = formAddCard.querySelector(".popup__link");
-
-  //criar objeto contendo os valores
-  const card = {
-    name: inputName.value,
-    link: inputLink.value,
-  };
-  createCards(card);
-  closePopup(".popup_add");
-});
-
-function deleteCard(event) {
-  const card = event.target.closest(".feed__card"); // Seleciona o cartão mais próximo da lixeira clicada
-  card.remove(); // Remove o cartão
-}
-
-// Seleciona todas as lixeiras nos cartões
-const deleteButtons = document.querySelectorAll(".delete-button");
-
-// Adiciona o evento de clique para cada lixeira
-deleteButtons.forEach((button) => {
-  button.addEventListener("click", deleteCard);
+// Adicionar os cartoes a pagina
+initialCards.forEach((card) => {
+  const newCard = createCard(card);
+  cards.prepend(newCard);
 });
