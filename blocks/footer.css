@@ -13,7 +13,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024) {
   .footer {
     max-width: 880px;
     width: 100%;

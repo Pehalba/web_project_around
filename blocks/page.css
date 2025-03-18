@@ -4,6 +4,4 @@
   margin: 0;
   font-family: "Inter";
   position: relative;
-  justify-content: space-between; /* Ajusta conforme o layout desejado */
-  min-height: 100vh; /* Garante que o fundo preencha toda a tela */
 }
