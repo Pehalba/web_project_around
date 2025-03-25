@@ -43,7 +43,10 @@ editbutton.addEventListener("click", openPopup);
 export function closePopup() {
   popup.classList.remove("popup_change_display");
 }
-closebutton.addEventListener("click", closePopup);
+closebutton.addEventListener("click", (event) => {
+  event.preventDefault();
+  closePopup();
+});
 
 //Fechar pop with ESCAPE
 export function closePopWithEsc(event) {
@@ -65,7 +68,10 @@ addImageButton.addEventListener("click", openPopupImg);
 export function closePopupImg() {
   popupImage.classList.remove("popup_change_display");
 }
-closePopupImgButton.addEventListener("click", closePopupImg);
+closePopupImgButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  closePopupImg();
+});
 
 //Fechar PopupIMGfull
 
