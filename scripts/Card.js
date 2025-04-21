@@ -46,12 +46,14 @@ export default class Card {
         );
       });
 
+    //remove card
     elementCard
       .querySelector(".elements-element-button-trash")
       .addEventListener("click", (event) => {
         event.target.parentElement.remove();
       });
 
+    //Abrir/fechar PopupImgFull
     elementCard
       .querySelector(".elements__element-image")
       .addEventListener("click", (event) => {
