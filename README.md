@@ -10,3 +10,5 @@ The technologies used in the development were HTML, CSS, and JavaScript, applyin
 
 Link git hub pages:
 https://pehalba.github.io/web_project_around/
+
+Pedro Alba

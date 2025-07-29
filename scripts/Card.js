@@ -1,11 +1,22 @@
 export default class Card {
-  constructor(data, templateSelector, handleCardClick) {
+  constructor(
+    data,
+    templateSelector,
+    handleCardClick,
+    handleDeleteCard,
+    currentUserId,
+    api
+  ) {
     this._name = data.name;
     this._link = data.link;
+    this._id = data._id; // Card ID from server
+    this._ownerId = data.owner; // Owner ID from server
+    this._isLiked = data.isLiked || false; // Use server's isLiked property
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
-
-    this._isLiked = JSON.parse(localStorage.getItem(this._name)) || false;
+    this._handleDeleteCard = handleDeleteCard;
+    this._currentUserId = currentUserId;
+    this._api = api;
   }
 
   _getTemplate() {
@@ -21,28 +32,49 @@ export default class Card {
       this._handleCardClick({ link: this._link, name: this._name })
     );
     this._likeButton.addEventListener("click", () => this._toggleLike());
-    this._deleteButton.addEventListener("click", () => this._deleteCard());
-  }
 
-  // Alterna o estado do like
-  _toggleLike() {
-    this._isLiked = !this._isLiked; // Alterna o estado
-
-    if (this._isLiked) {
-      this._likeButton.classList.add("element__like_active");
-      console.log("Classe adicionada: element__like_active");
+    // Only show delete button if card belongs to current user
+    if (this._ownerId === this._currentUserId) {
+      this._deleteButton.addEventListener("click", () =>
+        this._handleDeleteCard(this)
+      );
     } else {
-      this._likeButton.classList.remove("element__like_active");
-      console.log("Classe removida: element__like_active");
+      this._deleteButton.style.display = "none";
     }
-
-    // Persistir o estado no localStorage
-    localStorage.setItem(this._name, this._isLiked);
   }
-  // Deleta o cartão
-  _deleteCard() {
-    this._element.remove();
-    this._element = null;
+
+  // Alterna o estado do like no servidor
+  _toggleLike() {
+    const method = this._isLiked
+      ? this._api.unlikeCard(this._id)
+      : this._api.likeCard(this._id);
+
+    method
+      .then((updatedCard) => {
+        this._isLiked = updatedCard.isLiked;
+
+        if (this._isLiked) {
+          this._likeButton.classList.add("element__like_active");
+        } else {
+          this._likeButton.classList.remove("element__like_active");
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to toggle like:", err);
+      });
+  }
+
+  // Deleta o cartão do servidor
+  deleteCard() {
+    this._api
+      .deleteCard(this._id)
+      .then(() => {
+        this._element.remove();
+        this._element = null;
+      })
+      .catch((err) => {
+        console.error("Failed to delete card:", err);
+      });
   }
 
   getCardElement() {
@@ -51,21 +83,15 @@ export default class Card {
     this._likeButton = this._element.querySelector(".element__like");
     this._deleteButton = this._element.querySelector(".element__trash-icon");
 
-    // Pdados do cartão
+    // Dados do cartão
     this._element.querySelector(".element__name").textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
 
-    // Estado do likee
-    // Carregar estado inicial do like do localStorage
-    this._isLiked = JSON.parse(localStorage.getItem(this._name)) || false;
+    // Estado inicial do like baseado no servidor
     if (this._isLiked) {
       this._likeButton.classList.add("element__like_active");
     }
-
-    this._element.querySelector(".element__name").textContent = this._name;
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
 
     this._setEventListeners();
     return this._element;

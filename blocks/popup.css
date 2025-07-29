@@ -104,37 +104,184 @@
   border: 1px solid #cac8c8;
 }
 
-@media screen and (max-width: 767px) and (min-width: 320px) {
-  .popup__content {
-    width: 282px;
-  }
+.popup__button_disabled {
+  color: #cac8c8;
+  cursor: not-allowed;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #cac8c8;
+}
 
-  .popup__title {
-    font-size: 18px;
-    padding-top: 35px;
-    padding-bottom: 76px;
-    padding-left: 20px;
-  }
+/* Delete confirmation popup styles */
+.popup__delete-confirmation {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
 
-  .popup__input {
-    width: 238px;
-    height: 26px;
-    margin: 0 auto;
-  }
+.popup__delete-confirmation.popup_opened {
+  display: flex;
+}
 
-  .popup__button-save {
-    width: 238px;
-    height: 46px;
-    margin: 0 auto 25px;
-  }
+.popup__delete-content {
+  width: 430px;
+  height: 181px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
-  .popup__close-button {
-    top: -23px;
-    left: 153px;
-  }
+.popup__delete-title {
+  color: rgba(0, 0, 0, 1);
+  font-family: "Inter 900";
+  font-weight: 900;
+  font-size: 24px;
+  width: fit-content;
+  padding: 34px 64px 54px 36px;
+  margin: 0;
+  align-self: flex-start;
+}
 
-  .popup__error {
-    color: rgba(255, 0, 0, 1);
-    margin: 10px 20px 10px;
-  }
+.popup__delete-confirm-button {
+  border: none;
+  width: 100%;
+  max-width: 358px;
+  height: 50.15px;
+  background-color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  margin: 0 auto 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.popup__delete-close-button {
+  color: rgba(255, 255, 255, 1);
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup__delete-close-button img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* Avatar edit popup styles */
+.popup__avatar-edit {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.popup__avatar-edit.popup_opened {
+  display: flex;
+}
+
+.popup__avatar-content {
+  width: 430px;
+  height: 330px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.popup__avatar-title {
+  color: rgba(0, 0, 0, 1);
+  font-family: "Inter 900";
+  font-weight: 900;
+  font-size: 24px;
+  width: fit-content;
+  padding: 34px 64px 54px 36px;
+  margin: 0;
+  align-self: flex-start;
+}
+
+.popup__avatar-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.popup__avatar-label {
+  display: none;
+}
+
+.popup__avatar-input {
+  width: 358px;
+  height: 27.34px;
+  margin: 0 auto;
+  border: none;
+  padding: 0;
+  border-bottom: 1px solid rgb(175, 170, 170);
+}
+
+.popup__avatar-save-button {
+  border: none;
+  width: 100%;
+  max-width: 358px;
+  height: 50.15px;
+  background-color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  margin: 0 auto 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.popup__avatar-close-button {
+  color: rgba(255, 255, 255, 1);
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup__avatar-close-button img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
